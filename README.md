@@ -1,2 +1,2 @@
 # bash-rag
-Very simple GenAI RAG, using only terminal. This shows how simple RAG can be.
+Very simple GenAI RAG, using only terminal, showing how simple RAG can be.
