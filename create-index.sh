@@ -29,7 +29,7 @@ CREATE VIRTUAL TABLE documents
         document, -- document text to index
         content='', -- note we can make it smaller by not saving the content https://www.sqlite.org/fts5.html#contentless_tables
         contentless_delete=1,
-        tokenize = 'porter' --https://www.sqlite.org/fts5.html#tokenizers
+        tokenize = 'trigram' --to support substring matching in general https://www.sqlite.org/fts5.html#tokenizers
     );
 "
 
@@ -41,17 +41,16 @@ for file in documents/*.txt; do
     rowid=$(sqlite3 rag-textsearch.db "INSERT INTO rowid_to_path(path) VALUES ('$file') RETURNING rowid;")
     sqlite3 rag-textsearch.db "INSERT INTO documents(rowid, document) VALUES ($rowid, '$content');"
     ((count++))
-    if [ $((count % 100)) -eq 0 ]; then
+    if [ $((count % 10)) -eq 0 ]; then
         printf "\rIndexed $count of $total_documents documents"
     fi
 done
-echo -e "\nFinished indexing $count documents, you can now prompt"
+echo "\nFinished indexing $count documents, you can now prompt"
 
 echo "Checking if search works..."
 max_amount_of_docs_to_return=10
-rowids=$(sqlite3 rag-textsearch.db "SELECT rowid FROM documents WHERE documents MATCH 'e' ORDER BY rank LIMIT $max_amount_of_docs_to_return;" | tr '\n' ',' | sed 's/,$//')
+rowids=$(sqlite3 rag-textsearch.db "SELECT rowid FROM documents WHERE documents MATCH 'iel tud' ORDER BY rank LIMIT $max_amount_of_docs_to_return;" | tr '\n' ',' | sed 's/,$//')
 
-# Use rowids to get paths
 if [ ! -z "$rowids" ]; then
     echo "Getting document paths..."
     sqlite3 rag-textsearch.db "SELECT path FROM rowid_to_path WHERE rowid IN ($rowids);"
