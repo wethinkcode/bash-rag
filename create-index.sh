@@ -35,7 +35,7 @@ CREATE VIRTUAL TABLE documents
 
 echo "Indexing documents..."
 count=0
-for file in documents/*.txt; do
+for file in "$documents_dir"/*.txt; do
     # Escape single quotes in content for SQL
     content=$(cat "$file" | sed "s/'/''/g")
     rowid=$(sqlite3 rag-textsearch.db "INSERT INTO rowid_to_path(path) VALUES ('$file') RETURNING rowid;")
