@@ -19,8 +19,12 @@ This project demonstrates how RAG can be implemented simply and effectively.
 ```create-index.sh -documents "documents"``` creates a sqlite text search index for the text files in the documents folder. 
 
 ### Step 2: Seach for doc paths with a prompt
-```search.sh -prompt "myprompt" -limit "10"``` returns the top 10 ranked document paths from the text search
+```search.sh -prompt "myprompt" -limit "10" > temp-matched-documentpaths.txt``` returns the top 10 ranked document paths from the text search
 
-### Step 3: Prompt LLM with the documents (example)
-```prompt.sh -query "myprompt" -documentPaths "mydocpaths"``` read the documents at these paths, and inject it before your prompt to an LLM.
+### Step 3: Build a prompt with the documents and a user prompt
+```prompt_with_rag=$(./build-prompt.sh -prompt "$user_prompt" -rag_paths "temp-matched-documentpaths.txt")``` reads the documents at these paths, and injects them into the prompt before your prompt to an LLM.
 
+### Step 4: Run the model
+```ollama run deepseek-r1:1.5b "$prompt_with_rag"``` runs the model with the prompt
+
+    
