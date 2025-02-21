@@ -1,3 +1,4 @@
 documents/
 exampledocs/
 *.db 
+temp-matched-documentpaths.txt
