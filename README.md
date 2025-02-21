@@ -1,5 +1,5 @@
 # bash-rag - Simple Terminal SQLite RAG Implementation
-TLDR run `./example.sh` to see a simple rag in 
+TLDR run `./example.sh` to see a simple rag in action.
 
 A lightweight Retrieval-Augmented Generation (RAG) example using only terminal and plain sqlite text search.
 
