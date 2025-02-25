@@ -2,3 +2,9 @@ documents/
 exampledocs/
 *.db 
 temp-matched-documentpaths.txt
+vector-search/all-MiniLM-L6-v2.e4ce9877.q8_0.gguf
+vector-search/matches.txt
+vector-search/installFIXED2.sh
+vector-search/installFIXED.sh
+vector-search/vec0.dylib
+vector-search/lembed0.dylib
