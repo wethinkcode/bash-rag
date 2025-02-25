@@ -5,7 +5,7 @@ TLDR:
 
 Two lightweight Retrieval-Augmented Generation (RAG) examples using only terminal and SQLite, demonstrating how RAG can be implemented simply and effectively without complex infrastructure.
 
-## Keyword search example
+## Keyword search with plain SQLite
 ### Features
 - Just plain SQLite, no extensions or dependencies.
 - Classic text search: Uses SQLite's built-in full-text search with BM25 ranking algorithm.
@@ -17,10 +17,10 @@ Two lightweight Retrieval-Augmented Generation (RAG) examples using only termina
 - It would be useful to add performance comparisons with other RAG methods.
 
 ###  Usage
-- Run `cd keyword-search && ./example.sh` to run the full, slow example.
-- `search.sh` 
+- Run `./setup-and-prompt.sh` to run the full, slow example.
+- After that, run `prompt.sh "your user prompt"` to search, build the prompt and run the model.
 
-## Vector search example
+## Vector search with SQLite extensions
 ### Features
 - Matches similar meanings better than keyword search
 - No hosted database: uses embedding and vector search with only a SQLite extension
@@ -30,3 +30,8 @@ Two lightweight Retrieval-Augmented Generation (RAG) examples using only termina
 - Requires installation of extensions and downloading the embedding model, as these aren't built into SQLite.
 - Keyword search may still perform better for certain queries - especially those with few keywords and limited context.
 - A hosted database solution would offer easier maintenance and updates.
+
+###  Usage
+- Run `./setup-and-prompt.sh` to run the full, slow example.
+- After that, run `prompt.sh "your user prompt"` to search, build the prompt and run the model.
+- Note that the SQLite extensions for Mac M-chip is installed, but you will have to install it manually for other architectures.
