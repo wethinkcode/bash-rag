@@ -1,24 +1,9 @@
 # bash-rag - Simple Terminal SQLite RAG Implementations
 TLDR: 
-- `cd keyword-search && ./setup-and-prompt.sh` to see RAG using only plain SQLite and its text search
 - `cd vector-search && ./setup-and-prompt.sh` to see RAG using only SQLite extensions for semantic search
+- `cd keyword-search && ./setup-and-prompt.sh` to see RAG using only plain SQLite and its text search
 
-Two lightweight Retrieval-Augmented Generation (RAG) examples using only terminal and SQLite, demonstrating how RAG can be implemented simply and effectively without complex infrastructure.
-
-## Keyword search with plain SQLite
-### Features
-- Just plain SQLite, no extensions or dependencies.
-- Classic text search: Uses SQLite's built-in full-text search with BM25 ranking algorithm.
-- Handles typos and partial matches: Uses SQLite's built-in `trigram` tokenizer.
-- Source documents aren't stored in the database, only the index, making it space efficient.
-
-###  Limitations
-- Doesn't use embeddings or semantic search, so searching for "motor vehicle" wouldn't match "car". Relies on keyword search (BM25), though this is sufficient for many use cases.
-- It would be useful to add performance comparisons with other RAG methods.
-
-###  Usage
-- Run `./setup-and-prompt.sh` to run the full, slow example.
-- After that, run `prompt.sh "your user prompt"` to search, build the prompt and run the model.
+Two lightweight Retrieval-Augmented Generation (RAG) examples using only terminal and SQLite with extensions, demonstrating how RAG can be implemented simply and effectively without complex infrastructure.
 
 ## Vector search with SQLite extensions
 ### Features
@@ -33,5 +18,21 @@ Two lightweight Retrieval-Augmented Generation (RAG) examples using only termina
 
 ###  Usage
 - Run `./setup-and-prompt.sh` to run the full, slow example.
-- After that, run `prompt.sh "your user prompt"` to search, build the prompt and run the model.
+- After that, run `prompt.sh` to search, build the prompt and run the model.
 - Note that the SQLite extensions for Mac M-chip is installed, but you will have to install it manually for other architectures.
+
+## Keyword search with plain SQLite
+### Features
+- Just plain SQLite, no extensions or dependencies.
+- Classic text search: Uses SQLite's built-in full-text search with BM25 ranking algorithm.
+- Handles typos and partial matches: Uses SQLite's built-in `trigram` tokenizer.
+- Source documents aren't stored in the database, only the index, making it space efficient.
+
+###  Limitations
+- Doesn't use embeddings or semantic search, so searching for "motor vehicle" wouldn't match "car". Relies on keyword search (BM25), though this is sufficient for many use cases.
+- Also doesn't work well with long questions, and not just keywords.
+- It would be useful to add performance comparisons with other RAG methods.
+
+###  Usage
+- Run `./setup-and-prompt.sh` to run the full, slow example.
+- After that, run `prompt.sh` to search, build the prompt and run the model.
