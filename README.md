@@ -1,7 +1,7 @@
 # bash-rag - Simple Terminal SQLite RAG Implementations
 TLDR: 
-- run `cd keyword-search && ./setup-and-prompt.sh` to see RAG using only plain SQLite and its text search
-- run `cd vector-search && ./setup-and-prompt.sh` to see RAG using SQLite extensions for semantic search
+- `cd keyword-search && ./setup-and-prompt.sh` to see RAG using only plain SQLite and its text search
+- `cd vector-search && ./setup-and-prompt.sh` to see RAG using only SQLite extensions for semantic search
 
 Two lightweight Retrieval-Augmented Generation (RAG) examples using only terminal and SQLite, demonstrating how RAG can be implemented simply and effectively without complex infrastructure.
 
