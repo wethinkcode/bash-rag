@@ -4,6 +4,7 @@ TLDR run `./example.sh` to see a RAG prompt in action.
 A lightweight Retrieval-Augmented Generation (RAG) example using only terminal and plain sqlite text search, to show how RAG can be implemented simply and effectively.
 
 ## Features
+- Just plain SQLite, no extensions or dependencies.
 - Classic text search: Uses SQLite's built-in full-text search with BM25 ranking algorithm.
 - Handles typos and partial matches: Uses SQLite's built-in `trigram tokenizer.
 - Source documents aren't stored in the database, only the index, so quite space efficient.
