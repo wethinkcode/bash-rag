@@ -1,5 +1,5 @@
 # bash-rag-sqlite-vect - Simple Terminal SQLite RAG Implementation
-TLDR run `./example.sh` to see a RAG prompt in action.
+TLDR run `./example.sh` to see a RAG prompt in action using ve
 
 ## Prerequisites
 - Install sqlite-vec and sqlite-lembed SQLite extensions
