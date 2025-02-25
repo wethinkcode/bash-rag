@@ -1,6 +1,6 @@
 #!/bin/bash
 # Default prompt if none provided
-user_prompt="${1:-"social science"}"
+user_prompt="${1:-"which fields mentioned are social sciences?"}"
 
 # Perform vector search
 echo "Performing vector search to match documents..."
