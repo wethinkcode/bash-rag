@@ -1,6 +1,6 @@
 echo "Unzipping example documents..."
 rm -rf exampledocs
-unzip -q exampledocuments.zip -d exampledocs
+unzip -q ../exampledocuments.zip -d exampledocs
 
 ./create-index.sh -documents exampledocs
 echo "Searching for documents..."
@@ -10,7 +10,7 @@ user_prompt="ield stud"
 echo "Number of matched documents:" $(wc -l < temp-matched-documentpaths.txt)
 
 echo "Read files and append to a single file..."
-prompt_with_rag=$(./build-prompt.sh -prompt "$user_prompt" -rag_paths "temp-matched-documentpaths.txt")
+prompt_with_rag=$(../build-prompt.sh -prompt "$user_prompt" -rag_paths "temp-matched-documentpaths.txt")
 echo "Prompt with RAG:"
 echo "$prompt_with_rag"
 
