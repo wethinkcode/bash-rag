@@ -1,28 +1,32 @@
-# bash-rag-sqlite - Simple Terminal SQLite RAG Implementation
-TLDR run `./example.sh` to see a RAG prompt in action.
+# bash-rag - Simple Terminal SQLite RAG Implementations
+TLDR: 
+- run `cd keyword-search && ./setup-and-prompt.sh` to see RAG using only plain SQLite and its text search
+- run `cd vector-search && ./setup-and-prompt.sh` to see RAG using SQLite extensions for semantic search
 
-A lightweight Retrieval-Augmented Generation (RAG) example using only terminal and plain sqlite text search, to show how RAG can be implemented simply and effectively.
+Two lightweight Retrieval-Augmented Generation (RAG) examples using only terminal and SQLite, demonstrating how RAG can be implemented simply and effectively without complex infrastructure.
 
-## Features
+## Keyword search example
+### Features
 - Just plain SQLite, no extensions or dependencies.
 - Classic text search: Uses SQLite's built-in full-text search with BM25 ranking algorithm.
-- Handles typos and partial matches: Uses SQLite's built-in `trigram tokenizer.
-- Source documents aren't stored in the database, only the index, so quite space efficient.
+- Handles typos and partial matches: Uses SQLite's built-in `trigram` tokenizer.
+- Source documents aren't stored in the database, only the index, making it space efficient.
 
-## Limitations
-- Doesn't use embeddings or symantic search, so searching for "motorvehicle" wouldn't match "car". Just uses plain old keyword search (BM25), but this might be good enough for most cases.
-- It would be useful to add some performance comparisons with other RAG methods.
+###  Limitations
+- Doesn't use embeddings or semantic search, so searching for "motor vehicle" wouldn't match "car". Relies on keyword search (BM25), though this is sufficient for many use cases.
+- It would be useful to add performance comparisons with other RAG methods.
 
-## Usage
-### First create the index
-```create-index.sh -documents "documents"``` creates a sqlite text search index for the text files in the documents folder. 
+###  Usage
+- Run `cd keyword-search && ./example.sh` to run the full, slow example.
+- `search.sh` 
 
-### Then create & run prompt
-#### Step 1: Seach for documents that match the user prompt
-```search.sh -prompt "myprompt" -limit "10" > temp-matched-documentpaths.txt``` returns the top 10 ranked document paths from the text search
+## Vector search example
+### Features
+- Matches similar meanings better than keyword search
+- No hosted database: uses embedding and vector search with only a SQLite extension
+- Built on well-supported open source projects for long-term viability
 
-#### Step 2: Prepend the matching documents to the user prompt
-```prompt_with_rag=$(./build-prompt.sh -prompt "$user_prompt" -rag_paths "temp-matched-documentpaths.txt")``` reads the documents at these paths, and injects them into the prompt before your prompt to an LLM.
-
-#### Step 3: Run prompt on the model
-```ollama run deepseek-r1:1.5b "$prompt_with_rag"``` runs the model with the prompt
+### Limitations
+- Requires installation of extensions and downloading the embedding model, as these aren't built into SQLite.
+- Keyword search may still perform better for certain queries - especially those with few keywords and limited context.
+- A hosted database solution would offer easier maintenance and updates.
