@@ -1,5 +1,5 @@
 
-user_prompt="${1:-"ield stud"}"
+user_prompt="${1:-"study"}"
 ./search.sh -prompt "$user_prompt" -limit 10 > temp-matched-documentpaths.txt
 echo "Number of matched documents:" $(wc -l < temp-matched-documentpaths.txt)
 

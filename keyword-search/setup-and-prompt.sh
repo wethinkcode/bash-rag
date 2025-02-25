@@ -1,5 +1,5 @@
 # Default prompt if none provided
-user_prompt="${1:-"ield stud"}"
+user_prompt="${1:-"study"}"
 
 echo "Unzipping example documents..."
 rm -rf exampledocs
