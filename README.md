@@ -36,3 +36,7 @@ Two lightweight Retrieval-Augmented Generation (RAG) examples using only termina
 ###  Usage
 - Run `./setup-and-prompt.sh` to run the full, slow example.
 - After that, run `prompt.sh` to search, build the prompt and run the model.
+
+## Attribution
+
+With appreciation to [Jacques de Vos](https://github.com/jacdevos) for the original bash-rag code and inspiration that this is forked from.
